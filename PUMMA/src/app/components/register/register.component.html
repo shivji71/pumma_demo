@@ -1,0 +1,114 @@
+
+<mat-card class="login-card-cls">
+  <mat-card-header>
+    <mat-card-title><h1><strong>User Registration Form</strong></h1></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+  <form [formGroup]="registerForm" class="register-cls">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name:</mat-label>
+        <input matInput type="text" formControlName="firstName" placeholder="First Name">
+        <mat-error *ngIf="registerForm.get('firstName')?.hasError('required')">First Name is Required</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name:</mat-label>
+        <input matInput type="text" formControlName="lastName" placeholder="Last Name">
+        <mat-error *ngIf="registerForm.get('lastName')?.hasError('required')">Last Name is Required</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Street Address 1:</mat-label>
+        <input matInput type="text" formControlName="streetAddress1" placeholder="Street Address 1">
+        <mat-error *ngIf="registerForm.get('streetAddress1')?.hasError('required')">Address is Required</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Street Address 2:</mat-label>
+        <input matInput type="text" formControlName="streetAddress2" placeholder="Street Address 2">
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Zip Code:</mat-label>
+        <input matInput type="text" formControlName="zipCode" placeholder="Zip Code" (input)="getCitiesAndStateByZip($event)">
+        <mat-error *ngIf="registerForm.get('zipCode')?.hasError('required')">Zip Code is Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>City:</mat-label>
+        <mat-select formControlName="city" placeholder="City" class="city-cls" (selectionChange)="onSelectCities()" #myFormControl>
+          <mat-option *ngFor="let city of citiesAndStateArr" [value]="city.mscz_state_city_city">{{ city.mscz_state_city_city }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="registerForm.get('city')?.hasError('required')">City is Required</mat-error>
+        <mat-error *ngIf="registerForm.get('city')?.hasError('customError')">City is Required</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>State:</mat-label>
+        <input matInput type="text" formControlName="state" placeholder="State" readonly #myFormControl>
+        <mat-error *ngIf="registerForm.get('state')?.hasError('required')">State is Required</mat-error>
+        <mat-error *ngIf="registerForm.get('state')?.hasError('customError')">State is Required</mat-error>
+
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Primary Phone No:</mat-label>
+        <input matInput type="number" formControlName="primaryPhoneNo" placeholder="Primary Phone Number">
+        <mat-error *ngIf="registerForm.get('primaryPhoneNo')?.hasError('pattern')">Invalid mobile number format.</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Alternate Phone No:</mat-label>
+        <input matInput type="number" formControlName="alternatePhoneNo" placeholder="Alternate Phone No">
+        <mat-error *ngIf="registerForm.get('alternatePhoneNo')?.hasError('pattern')">Invalid mobile number format.</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Fax:</mat-label>
+        <input matInput type="text" formControlName="fax" placeholder="Fax">
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Email Address:</mat-label>
+        <input matInput type="email" formControlName="email" placeholder="Email Address">
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">Email is Required</mat-error>
+        <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Invalid email format.</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Username:</mat-label>
+        <input matInput type="text" formControlName="userName" placeholder="User Name">
+        <mat-error *ngIf="registerForm.get('userName')?.hasError('required')">Address is Required</mat-error>
+  
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Password:</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="Password">
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Address is Required</mat-error>
+        
+  
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Re-enter Password:</mat-label>
+        <input matInput type="password" formControlName="rePassword" placeholder="Re-enter Password" (input)="machPass(registerForm)">
+        <mat-error *ngIf="registerForm.get('rePassword')?.hasError('required')">Address is Required</mat-error>
+        <mat-error *ngIf="isConfirmedPass">Passwords do not match</mat-error>
+      </mat-form-field>
+      <mat-error *ngIf="registerForm.get('password')?.hasError('pattern')">Password must be at least 8 characters long.     Password must contain at least one uppercase letter, one lowercase letter, and one number.
+      </mat-error>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="btn-cls">
+      <button type="submit" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="registerForm.invalid">Submit</button>
+      <button mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    </div>
+  </mat-card-actions>
+</mat-card> 
+
+
+  
+
+

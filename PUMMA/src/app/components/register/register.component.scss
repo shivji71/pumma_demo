@@ -1,0 +1,61 @@
+.register-cls{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.login-cls{
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.register-cls mat-form-field{
+    margin: 14px;
+    height: 50px; 
+}
+h1{
+    height: 10px;
+}
+.btn-cls{
+    width: 75%;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.login-card-cls{
+    width: 60%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFF3E0;
+}
+
+mat-card-header{
+    display: flex;
+    justify-content: center;
+}
+
+mat-card-title{
+    text-align: center;
+}
+
+.check-err-cls{
+    display: flex;
+    flex-direction: column;
+}
+span{
+    color: red;
+    margin-left: 14px;
+}
+

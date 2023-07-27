@@ -1,0 +1,15 @@
+
+<mat-card class="mat-cls" style="background: antiquewhite;">
+  <div class="header-div-cls">
+    <button [ngClass]="isWelcome ? 'welcome-btn' : null" (click)="onWelcome()">Welcome</button>
+    <button [ngClass]="isUserDetails ? 'welcome-btn' : null" class="userDetails-btn"  (click)="onUserDetails()">User Details</button>
+    <button [ngClass]="isLogout ? 'welcome-btn' : null"  class="logout-btn" (click)="onLogout()">Logout</button>
+</div>
+<mat-divider style="margin-top : 20px"></mat-divider>
+</mat-card>
+
+<!-- rendering welcome and user details page  -->
+<app-welcome *ngIf="isWelcome" [userDetail]="userDetail"></app-welcome>
+<app-user-details *ngIf="isUserDetails" [userDetails]="allUsersList" (deletedUser)="onDeleteUser($event)"></app-user-details>
+
+

@@ -1,0 +1,55 @@
+<div class="search-cls">
+  <mat-form-field appearance="outline">
+    <mat-label>Search</mat-label>
+    <input matInput type="number" placeholder="Search By User ID" (input)="getUserById($event)">
+  </mat-form-field>
+</div>
+
+<!-- table for all user details  -->
+<mat-card>
+  <table mat-table [dataSource]="paginatedUserDetails" class="mat-elevation-z8 demo-table table-cls">
+    <!-- Define table columns -->
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef><u>{{ column | titlecase }}</u></th>
+      <ng-container *ngIf="column == 'User ID'">
+        <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': !element.lud_activelab ? '#FF6347' : 'transparent' }">{{ element.lud_user_id}}</td>
+      </ng-container>
+      <ng-container *ngIf="column == 'Username'">
+        <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': !element.lud_activelab ? '#FF6347' : 'transparent' }">{{ element.lud_user_username}}</td>
+      </ng-container>
+      <ng-container *ngIf="column == 'First Name'">
+        <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': !element.lud_activelab ? '#FF6347' : 'transparent' }">{{ element.lud_user_firstname}}</td>
+      </ng-container>
+      <ng-container *ngIf="column == 'Last Name'">
+        <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': !element.lud_activelab ? '#FF6347' : 'transparent' }">{{ element.lud_user_lastname}}</td>
+      </ng-container>
+      <ng-container *ngIf="column == 'Email ID'">
+        <td mat-cell *matCellDef="let element" [ngStyle]="{ 'background-color': !element.lud_activelab ? '#FF6347' : 'transparent' }">{{ element.lud_user_email}}</td>
+      </ng-container>
+      <ng-container *ngIf="column == 'Edit'">
+        <td mat-cell *matCellDef="let element" class="edit-cls" (click)="updateUser(element)"><u *ngIf="element.lud_activelab">EDIT</u></td>
+      </ng-container>
+      <ng-container *ngIf="(column == 'Delete')">
+        <td mat-cell *matCellDef="let element" class="delete-cls" (click)="deleteUser(element.lud_user_id)"><u *ngIf="element.lud_activelab">DELETE</u></td>
+      </ng-container>
+    </ng-container>
+  
+    <!-- Define table header row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+    <!-- Define table data rows -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
+  <mat-paginator class="paginator-cls" [length]="totalItems"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[5,10,15,20]"
+                 [pageIndex]="pageIndex"
+                 (page)="handlePageEvent($event)"
+                 aria-label="Select page">
+  </mat-paginator>
+</mat-card>
+
+
+
+

@@ -1,0 +1,58 @@
+.login-input-cls{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.login-cls{
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.btn-cls{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    width: 78%;
+}
+.title-cls{
+    text-align: center;
+    font-weight: bold;
+}
+divider-cls{
+    border: 1px solid black;
+}
+
+
+.login-card-cls{
+    width: 20%;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #FFF3E0;
+}
+
+mat-card-content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+mat-card-actions{
+    justify-content: center;
+}
+
+mat-card-actions button{
+    margin: 5px;
+}

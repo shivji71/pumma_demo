@@ -1,0 +1,34 @@
+
+<mat-card class="welcome-header-cls"><h1><strong>WELCOME</strong> {{userDetail?.lud_user_firstname}} {{userDetail?.lud_user_lastname}}</h1>
+</mat-card>
+
+<div class="welcome-cls">
+  <table mat-table [dataSource]="addressDetails" class="mat-elevation-z8">
+    <ng-container matColumnDef="header">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let item"><strong>{{ item.header }}</strong></td>
+    </ng-container>
+    <ng-container matColumnDef="column1">
+      <th mat-header-cell *matHeaderCellDef><strong class="header-cls">Address Details</strong></th>
+      <td mat-cell *matCellDef="let item">{{ item.column1 }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="['header', 'column1']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['header', 'column1']"></tr>
+  </table>
+  
+  <table mat-table [dataSource]="contactDetails" class="mat-elevation-z8">
+    <ng-container matColumnDef="header">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let item"><strong>{{ item.header }}</strong></td>
+    </ng-container>
+    <ng-container matColumnDef="column1">
+      <th mat-header-cell *matHeaderCellDef><strong class="header-cls">Contact Details</strong></th>
+      <td mat-cell *matCellDef="let item">{{ item.column1 }}</td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="['header', 'column1']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['header', 'column1']"></tr>
+  </table>
+</div>
+

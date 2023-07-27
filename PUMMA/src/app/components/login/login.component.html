@@ -1,0 +1,24 @@
+<mat-card class="login-card-cls" [formGroup]="loginForm">
+    <mat-card-header>
+      <mat-card-title><h3><strong>PUMMA DEMO APPLICATION</strong></h3></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field appearance="outline">
+            <mat-label>Login:</mat-label>
+            <input matInput type="text" formControlName="userName" placeholder="Enter Username">
+            <mat-icon matSuffix>account_box</mat-icon>
+            <mat-error *ngIf="loginForm.get('userName')?.hasError('required')">Username is Required</mat-error>
+          </mat-form-field>
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Password:</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Enter Password">
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is Required</mat-error>
+          </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="login()" [disabled]="loginForm.invalid">LOGIN</button>
+      <button mat-raised-button color="primary" (click)="register()">REGISTER</button>
+    </mat-card-actions>
+  </mat-card>
